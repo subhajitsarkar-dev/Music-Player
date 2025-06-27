@@ -1,0 +1,15 @@
+@font-face {
+  font-family: papa;
+  src: url("../src/assets/fonts/BebasNeue-Regular.ttf");
+}
+@font-face {
+  font-family: mon;
+  src: url("../src/assets/fonts/Rubik-Regular.ttf");
+}
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --font-papa: papa, "Sans-Serif";
+  --font-mon: mon, "Sans-Serif";
+}
