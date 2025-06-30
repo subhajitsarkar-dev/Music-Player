@@ -9,3 +9,4 @@ export const moodAtom = atom({
 export const trackAtom = atom(null);
 export const playlistAtom = atom([]);
 export const playAtom = atom(false);
+export const durationAtom = atom(0);

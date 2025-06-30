@@ -4,6 +4,7 @@ import MoodSelect from "./MoodSelect";
 import { moodAtom, playAtom, playlistAtom, trackAtom } from "../utils/moodAtom";
 import { useEffect } from "react";
 import axios from "axios";
+import RelatedSong from "./RelatedSong";
 
 const Playground = () => {
   const [selectedMood] = useAtom(moodAtom);
@@ -24,7 +25,7 @@ const Playground = () => {
           params: {
             id: selectedMood?.value,
             offset: "0",
-            limit: "10",
+            limit: "60",
           },
           headers: {
             "x-rapidapi-key": key,
@@ -49,8 +50,8 @@ const Playground = () => {
 
   return (
     <>
-      <div className="grid grid-cols-2">
-        <div className="w-full h-screen">
+      <div className="grid grid-cols-2 bg-slate-100">
+        <div className="w-full h-screen bg-slate-800 rounded-br-2xl rounded-tr-2xl">
           <div className="">
             <CurrentSong />
           </div>
@@ -59,7 +60,9 @@ const Playground = () => {
           <div className="row-span-2 flex justify-center items-center">
             <MoodSelect />
           </div>
-          <div className="row-span-1 bg-indigo-500"></div>
+          <div className="row-span-1 px-5 pt-5 overflow-hidden">
+            <RelatedSong />
+          </div>
         </div>
       </div>
     </>

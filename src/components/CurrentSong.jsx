@@ -1,5 +1,10 @@
 import { useAtom } from "jotai";
-import { playAtom, playlistAtom, trackAtom } from "../utils/moodAtom";
+import {
+  durationAtom,
+  playAtom,
+  playlistAtom,
+  trackAtom,
+} from "../utils/moodAtom";
 import { useRef, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { TfiControlPause } from "react-icons/tfi";
@@ -10,7 +15,7 @@ const CurrentSong = () => {
   const [playlist, setPlaylist] = useAtom(playlistAtom);
   const [isPlaying, setIsPlaying] = useAtom(playAtom);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useAtom(durationAtom);
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
   const audioRef = useRef(null);
 
@@ -86,23 +91,22 @@ const CurrentSong = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen">
-        <div className="flex justify-between w-full items-center gap-2 pb-3 px-10 py-2">
-          <h1 className="font-papa text-3xl ">ViveZone</h1>
-          <p className="font-mon">
-            Take some <span>VIVE</span>
-          </p>
+        <div className="flex flex-col items-center gap-2 pb-2 text-slate-100">
+          <h1 className="font-papa text-3xl bg-slate-100 px-10 py-2 rounded-lg text-slate-900 flex flex-col">
+            ViveZone{" "}
+          </h1>
         </div>
         {track && (
           <>
-            <div className="flex flex-col items-center border p-5 rounded-xl">
+            <div className="flex flex-col items-center border p-5 bg-slate-100 backdrop-blur-sm rounded-xl">
               <div className="">
                 <img
                   src={track.album?.images?.[0]?.url}
                   alt="album"
-                  className="w-[380px] h-80 rounded-xl"
+                  className="w-[300px] h-64 rounded-xl"
                 />
               </div>
-              <div className="text-left w-[400px] pt-3">
+              <div className="text-left w-[300px] pt-3">
                 <h1 className="text-2xl font-mon font-semibold leading-7 line-clamp-1">
                   {track.name}
                 </h1>
@@ -111,8 +115,8 @@ const CurrentSong = () => {
                 </p>
               </div>
               <div className="">
-                <div className="mt-4 w-[400px]">
-                  <div className="flex justify-between text-sm text-gray-400 mb-1">
+                <div className="mt-4 w-[300px]">
+                  <div className="flex justify-between text-sm font-mon text-gray-400 mb-1">
                     <span>{formatTime(currentTime)}</span>
                     <span>{formatTime(duration)}</span>
                   </div>
@@ -137,7 +141,7 @@ const CurrentSong = () => {
               <div className="flex items-center gap-4 mt-4">
                 <button
                   onClick={playPrevious}
-                  className="p-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-all duration-200 hover:scale-105 text-white text-xl"
+                  className="p-3 rounded-full bg-slate-700 hover:bg-slate-600 transition-all duration-200 hover:scale-105 text-slate-100 text-xl"
                 >
                   <SlControlStart />
                 </button>
@@ -146,18 +150,14 @@ const CurrentSong = () => {
                   onClick={() =>
                     isPlaying ? handlePause() : handlePlay(track)
                   }
-                  className={`p-4 rounded-full ${
-                    isPlaying
-                      ? "bg-red-500 hover:bg-red-600"
-                      : "bg-blue-500 hover:bg-blue-600"
-                  } transition-all duration-200 hover:scale-110 text-white text-xl shadow-md`}
+                  className={`p-4 rounded-full cursor-pointer bg-slate-900 hover:bg-slate-950 transition-all duration-200 hover:scale-110 text-slate-100 text-xl shadow-md`}
                 >
                   {isPlaying ? <TfiControlPause /> : <FaPlay />}
                 </button>
 
                 <button
                   onClick={playNext}
-                  className="p-3 rounded-full bg-gray-700 hover:bg-gray-600 transition-all duration-200 hover:scale-105 text-white text-xl"
+                  className="p-3 rounded-full bg-slate-700 hover:bg-slate-600 transition-all duration-200 hover:scale-105 text-slate-100 text-xl"
                 >
                   <SlControlEnd />
                 </button>

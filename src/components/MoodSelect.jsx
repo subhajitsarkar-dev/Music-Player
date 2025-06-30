@@ -2,8 +2,8 @@ import { useAtom } from "jotai";
 import { moodAtom } from "../utils/moodAtom";
 
 const moods = [
-  { id: "happy", src: "./happy-mood.png", value: "1Eb3hIq4uBOicvBE8s3cQx" },
-  { id: "angry", src: "/angry-mood.png", value: "2h8z6Qo0xI05n4pNjREQsE" },
+  { id: "happy", src: "./happy-mood.png", value: "2fuHDSyPq89M21pqTnUNim" },
+  { id: "angry", src: "/angry-mood.png", value: "3JNWpteYvH3ynMcyPcvxfx" },
   { id: "worried", src: "/worried-mood.png", value: "2v8dbUhRp5m3ssj4PeBzCq" },
   { id: "sad", src: "/sad-mood.png", value: "4icXG0elrBxzTn5jSfJy1w" },
   { id: "neutral", src: "/neutral-mood.png", value: "4YtjDhpJ2vUeYwu4J8WV34" },
@@ -19,8 +19,8 @@ export default function MoodSelector() {
       <div className="font-papa text-3xl border-2 px-6 py-1.5 rounded-xl bg-black text-white">
         Choose Your Mood
       </div>
-      <div className="relative w-[350px] h-[320px] rounded-[30px] shadow-md flex justify-center items-center bg-white/20">
-        <div className="w-[130px] h-[130px] border-[3px] border-black rounded-[25px] flex justify-center items-center z-10 bg-white">
+      <div className="relative w-[350px] h-[320px] rounded-[30px] shadow-md flex justify-center items-center bg-slate-900/10 backdrop-blur-sm">
+        <div className="w-[130px] h-[130px] border-[3px] border-slate-900 rounded-[25px] flex justify-center items-center z-10">
           {selectedMood ? (
             <img
               src={selectedMood.src}
@@ -40,7 +40,7 @@ export default function MoodSelector() {
           return (
             <button
               key={mood.id}
-              className="absolute w-[60px] h-[60px] transform -translate-x-1/2 -translate-y-1/2"
+              className="absolute w-[60px] h-[60px] transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
               style={{
                 top: `50%`,
                 left: `50%`,
