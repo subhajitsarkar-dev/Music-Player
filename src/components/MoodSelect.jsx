@@ -16,7 +16,7 @@ export default function MoodSelector() {
 
   return (
     <div className="flex flex-col justify-center items-center gap-3">
-      <div className="font-papa text-3xl border-2 px-6 py-1.5 rounded-xl bg-black text-white">
+      <div className="font-papa text-3xl border-2 px-6 py-1.5 rounded-xl bg-slate-900 text-slate-100">
         Choose Your Mood
       </div>
       <div className="relative w-[350px] h-[320px] rounded-[30px] shadow-md flex justify-center items-center bg-slate-900/10 backdrop-blur-sm">
